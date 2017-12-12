@@ -12,8 +12,9 @@ package com.jcjcjp.cs131mp2;
  * 4. Call the methods with the initial values and the ODE object as arguments.
  * ---------------------------------
  * METHOD CALLS:
- * 		> Euler.odeEuler( t, y, h, n, function )
- * 		> Heun.odeHeun( t, y, h, n, function )
+ * 		> Euler.odeSystem( t, y, h, n, function )
+ * 		> Heun.odeSystem( t, y, h, n, function )
+ * 		> RK4.odeSystem( t, y, h, n, function )
  * 
  * 		ARGUMENTS:
  * 			t = initial value of t
@@ -58,15 +59,24 @@ public class Main
 		// Instantiate your ODE:
 			myODEFunction function = new myODEFunction();
 		
-		// Call the methods:	
-			System.out.println("Euler: ");
-			Euler.odeSystem(t0, y0, h, n, function);
+		// Call the methods:
+			double[][] euler_values, heun_values, rk4_values;
 			
-			System.out.println("Heun: ");
-			Heun.odeSystem(t0, y0, h, n, function);
 			
-			System.out.println("\n RK4: ");
-			RK4.odeSystem(t0, y0, 0.01, 100, function);
+			euler_values = Euler.odeSystem(t0, y0, h, n, function);
+			heun_values = Heun.odeSystem(t0, y0, h, n, function);
+			rk4_values = RK4.odeSystem(t0, y0, h, n, function);
+			
+		// Print the results:
+			System.out.printf("Euler (h = %.2f):\n", h);
+			ODEFunction.print( euler_values, 1 );
+			
+			System.out.printf("\n Heun (h = %.2f):\n", h);
+			ODEFunction.print( heun_values, 1 );
+			
+			System.out.printf("\n RK4 (h = %.2f):\n", 1);
+			ODEFunction.print( rk4_values, 1 );
+			
 			
 	}
 	
@@ -75,5 +85,7 @@ public class Main
 		// initialize the GUI:
 		new GUI(0);    
 	}
+	
+	
 
 }

@@ -11,6 +11,7 @@ package com.jcjcjp.cs131mp2;
 * 		ODEFunction.add( double[] a, double[] b )	// adds two vectors a and b
 * 		ODEFunction.add( double[][] vectors ) 		// adds vectors in the array to each other
 * 		ODEFunction.mult( double[] a, double c )	// multiplies vector a with a constant c
+* 		ODEFunction.print( double[][] vector, int n )  // print every n element in the vector
 * ==================================
 */
 
@@ -52,5 +53,14 @@ public abstract class ODEFunction
 		
 		return new_vector;
 	}
+	
+	// print every n element in the values vector
+	static void print( double[][] values, int n ) {
+		for( int i = 0; i < values.length; i++ ) {
+			if ( i % n == 0 )
+				System.out.printf( "%.2f,%f\n", values[i][0], values[i][1] );
+		}
+	}
+	
 	
 }

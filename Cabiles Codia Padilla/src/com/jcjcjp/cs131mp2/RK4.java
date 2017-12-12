@@ -33,7 +33,9 @@ public class RK4 {
 		for ( int i = 0; i < n; i++ )
 		{
 
-			System.out.printf( "%d t: %.2f y: %.6f \n", i, old_t, old_y[0]);
+			values[i][0] = old_t;
+			values[i][1] = old_y[0];
+//			System.out.printf( "%d t: %.2f y: %.6f \n", i, old_t, old_y[0]);
 			
 		/*
 		 * This part implements the actual algorithm: 

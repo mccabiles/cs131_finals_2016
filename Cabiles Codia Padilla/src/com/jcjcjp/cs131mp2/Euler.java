@@ -34,20 +34,18 @@ public abstract class Euler
 		
 		for ( int i = 0; i < n; i++ )
 		{
-
-			System.out.printf( "%d t: %.2f y: %.6f \n", i, old_t, old_y[0]);
-
+			values[i][0] = old_t;
+			values[i][1] = old_y[0];
+			
 			// This part implements the actual algorithm:
 			//	y = y0 + ( h * f(t0, y0) )
 			f = function.f( old_t, old_y );
 			new_y = ODEFunction.add( old_y, ODEFunction.mult( f, h ) );
 			new_t = old_t + h;
 			
-			values[i][0] = new_t;
-			values[i][1] = new_y[0];
-			
 			old_t = new_t;
 			old_y = new_y;
+			
 		}
 		
 		return values;

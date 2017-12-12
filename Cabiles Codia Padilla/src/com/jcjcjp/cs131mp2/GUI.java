@@ -93,10 +93,10 @@ public class GUI{
         }//End If
           
         else {
-          System.out.println(getX);
+          /*System.out.println(getX);
           System.out.println(getN);
           System.out.println(getH);
-          System.out.println(getY);
+          System.out.println(getY);*/
           f.setVisible(false); //you can't see me!
           f.dispose(); //Destroy the JFrame object
 

@@ -35,7 +35,7 @@ public abstract class Heun {
 		for ( int i = 0; i < n; i++ )
 		{
 
-			System.out.printf( "%d t: %.2f y: %.6f \n", i, old_t, old_y[0]);
+//			System.out.printf( "%d t: %.2f y: %.6f \n", i, old_t, old_y[0]);
 			
 		/*
 		 * This part implements the actual algorithm: 
@@ -44,6 +44,9 @@ public abstract class Heun {
 		 * 		k1 = f( t0 + h, k0 )
 		 *		y = y0  + ( (h/2) * ( f + k1 ) )
 		 */
+
+			values[i][0] = old_t;
+			values[i][1] = old_y[0];
 			
 			f = function.f( old_t, old_y );
 			k0 = ODEFunction.add( old_y, ODEFunction.mult(f, h) );
@@ -55,6 +58,7 @@ public abstract class Heun {
 							h/2 ));
 			
 			new_t = old_t + h;
+			
 			
 			old_y = new_y;
 			old_t = new_t;
