@@ -6,7 +6,7 @@ package com.jcjcjp.cs131mp2;
 * 	Solves ODE using Euler's method.
 * ----------------------------------
 * USAGE:
-*		> Euler.odeEuler( t0, y0, h, n, f )
+*		> Euler.odeSystem( t0, y0, h, n, f )
 *
 * ARGUMENTS:
 *		t0 = initial t

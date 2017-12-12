@@ -1,7 +1,5 @@
 package com.jcjcjp.cs131mp2;
 
-import com.jcjcjp.cs131mp2.Euler;
-
 /*
  * ==================================
  * MAIN FUNCTION
@@ -46,31 +44,40 @@ class myODEFunction extends ODEFunction
 public class Main
 {
 	
-	public static void main(String[] args) {
+	public static void run() {
 
-	// Set the initial conditions:
-		double t0 = 0;
+		// Set the initial conditions:
+			double t0 = 0;
+			
+			double[] y0 = new double[2]; // Our initial condition is y = [ pi/4, 0 ]
+			y0[0] = Math.PI /4;
+			y0[1] = 0;
+			
+			double h = 0.05;
+			int n = 33;
+			
+			
+		// Instantiate your ODE:
+			myODEFunction function = new myODEFunction();
 		
-		double[] y0 = new double[2]; // Our initial condition is y = [ pi/4, 0 ]
-		y0[0] = Math.PI /4;
-		y0[1] = 0;
-		
-		double h = 0.05;
-		int n = 33;
-		
-	// Instantiate your ODE:
-		myODEFunction function = new myODEFunction();
+		// Call the methods:	
+			System.out.println("Euler: ");
+
+			double [][] values;
+			values = Euler.odeSystem(t0, y0, h, n, function);
+			System.out.printf("%f", values[0][1]);
+			
+			System.out.println("Heun: ");
+			Heun.odeSystem(t0, y0, h, n, function);
+			
+			System.out.println("\n RK4: ");
+			RK4.odeSystem(t0, y0, 0.01, 100, function);
+			
+	}
 	
-	// Call the methods:	
-		System.out.println("Euler: ");
-		Euler.odeSystem(t0, y0, h, n, function);
-		
-		System.out.println("Heun: ");
-		Heun.odeSystem(t0, y0, h, n, function);
-		
-		System.out.println("\n RK4: ");
-		RK4.odeSystem(t0, y0, 0.01, 100, function);
-		
+	public static void main(String[] args) {
+		// initialize the GUI
+		new GUI(0);    
 	}
 
 }
