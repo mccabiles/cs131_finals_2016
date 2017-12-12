@@ -44,28 +44,23 @@ class myODEFunction extends ODEFunction
 public class Main
 {
 	
-	public static void run() {
+	public static void run( double t0, double[] y0, int n, double h ) {
 
 		// Set the initial conditions:
-			double t0 = 0;
-			
-			double[] y0 = new double[2]; // Our initial condition is y = [ pi/4, 0 ]
+			/*double[] y0 = new double[2]; // Our initial condition is y = [ pi/4, 0 ]
 			y0[0] = Math.PI /4;
 			y0[1] = 0;
 			
 			double h = 0.05;
 			int n = 33;
-			
+			*/
 			
 		// Instantiate your ODE:
 			myODEFunction function = new myODEFunction();
 		
 		// Call the methods:	
 			System.out.println("Euler: ");
-
-			double [][] values;
-			values = Euler.odeSystem(t0, y0, h, n, function);
-			System.out.printf("%f", values[0][1]);
+			Euler.odeSystem(t0, y0, h, n, function);
 			
 			System.out.println("Heun: ");
 			Heun.odeSystem(t0, y0, h, n, function);
@@ -76,7 +71,8 @@ public class Main
 	}
 	
 	public static void main(String[] args) {
-		// initialize the GUI
+		
+		// initialize the GUI:
 		new GUI(0);    
 	}
 

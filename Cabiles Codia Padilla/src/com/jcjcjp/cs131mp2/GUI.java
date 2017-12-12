@@ -2,7 +2,6 @@ package com.jcjcjp.cs131mp2;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane; 
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -103,7 +102,7 @@ public class GUI{
 
           new GUI(2);
           
-          Main.run();
+          parseInput( getX, getY, getN, getH );
 
         }//End Else
      
@@ -112,5 +111,18 @@ public class GUI{
 
   }//End Function EulerGUI         
   
+  public void parseInput( String t, String y, String n, String h )
+  {
+	  double t0 = Double.parseDouble(t);
+	  int n0 = Integer.parseInt(n);
+	  double h0 = Double.parseDouble(h);
+	  String[] y_values = y.split(",");
+	  double[] y0 = new double[ y_values.length ];
+	  
+	  for( int i = 0; i < y_values.length; i++ )
+		  y0[i] = Double.parseDouble( y_values[i] );
+	  
+	  Main.run( t0, y0, n0, h0 );
+  }
   
  }//End Class EulerGUI
